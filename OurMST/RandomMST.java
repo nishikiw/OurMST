@@ -1,4 +1,4 @@
-package CSC373A2;
+package OurMST;
 
 import java.util.*;
 
@@ -23,11 +23,10 @@ public class RandomMST {
 		
 		double totalWeight = 0;
 		for (int counter = V - 2;counter > 0;counter--){
-			// Pop out vertex with minimum cost, which is at edges[minVertexIndex].
-			
 			// Add the cost of popped out vertex to total weight of MST. 
 			totalWeight += edges[minVertexIndex];
 			
+			// Pop out vertex with minimum cost, which is at edges[minVertexIndex].
 			// Swap current vertex with the vertex with index counter if they are not the same.
 			if (minVertexIndex != counter){
 				double counterCost = edges[counter];
