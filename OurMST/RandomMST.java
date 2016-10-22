@@ -37,17 +37,14 @@ public class RandomMST {
 			minVertexIndex = 0;
 			// Generate edges connecting the vertex with minimum cost.
 			for (int i = 0; i < counter; i++){
-				{
-					double newEdge = rd.nextDouble();
-					if (newEdge < edges[i]){
-						edges[i] = newEdge;
-					}
-					if (edges[i] < edges[minVertexIndex]){
-						minVertexIndex = i;
-					}
+				double newEdge = rd.nextDouble();
+				if (newEdge < edges[i]){
+					edges[i] = newEdge;
 				}
-			}
-						
+				if (edges[i] < edges[minVertexIndex]){
+					minVertexIndex = i;
+				}
+			}				
 		}
 		
 		totalWeight += edges[0];
