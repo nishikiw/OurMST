@@ -1,5 +1,6 @@
 package OurMST;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -17,7 +18,7 @@ public class CircleMST {
 		double[] distances = new double[V - 1];
 		
 		// Generate x and y for starting vertex.
-		double x0 = rd.nextDouble();
+		double x0 = -1 + 2 * rd.nextDouble();
 		double y0 = -Math.sqrt(1 - Math.pow(x0, 2)) + rd.nextDouble() * 2 * Math.sqrt(1 - Math.pow(x0, 2));
 		
 		// Initiate arrays for all other vertices' x and y value except for x0.
@@ -27,7 +28,7 @@ public class CircleMST {
 		// Calculate their distance individually and add to array edges.
 		// Keep track of the minimum distance.
 		for (int j = 0; j < V - 1; j++){
-			xArray[j] = rd.nextDouble();
+			xArray[j] = -1 + 2 * rd.nextDouble();
 			yArray[j] = -Math.sqrt(1 - Math.pow(xArray[j], 2)) + rd.nextDouble() * 2 * Math.sqrt(1 - Math.pow(xArray[j], 2));
 			distances[j] = Math.pow(xArray[j] - x0, 2)+Math.pow(yArray[j] - y0, 2);
 			if (distances[j] < distances[minVertexIndex]){
@@ -35,11 +36,21 @@ public class CircleMST {
 			}
 		}
 		
+		/*
+		System.out.println("x: "+Arrays.toString(xArray));
+		System.out.println("y: "+Arrays.toString(yArray));
+		System.out.println("distance: "+Arrays.toString(distances));
+		System.out.println("--------------------------------");*/
+		
+		
+		
 		double totalWeight = 0;
 		for (int counter = V - 2;counter > 0;counter--){
 			
 			// Add the cost of popped out vertex to total weight of MST. 
 			totalWeight += Math.sqrt(distances[minVertexIndex]);
+			/*System.out.println("minDistance: "+distances[minVertexIndex]);
+			System.out.println("totalWeight: "+totalWeight);*/
 			
 			// Pop out vertex with minimum cost, which is at edges[minVertexIndex].
 			// Swap current vertex with the vertex with index counter.
@@ -62,14 +73,22 @@ public class CircleMST {
 			// Generate edges connecting the vertex with minimum cost.
 			for (int i = 0; i < counter; i++){
 				double newDistance = Math.pow(xArray[i] - xArray[counter], 2)+Math.pow(yArray[i] - yArray[counter], 2);
+				//System.out.println(newDistance);
 				if (newDistance < distances[i]){
 					distances[i] = newDistance;
 				}
 				if (distances[i] < distances[minVertexIndex]){
 					minVertexIndex = i;
 				}
-			}			
+			}
+			
+			/*
+			System.out.println("x: "+Arrays.toString(xArray));
+			System.out.println("y: "+Arrays.toString(yArray));
+			System.out.println("distance: "+Arrays.toString(distances));
+			System.out.println("--------------------------------");*/
 		}
+		
 		
 		totalWeight += Math.sqrt(distances[0]);
 		return totalWeight;
