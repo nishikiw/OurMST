@@ -36,11 +36,11 @@ public class CircleMST {
 			}
 		}
 		
-		/*
+		
 		System.out.println("x: "+Arrays.toString(xArray));
 		System.out.println("y: "+Arrays.toString(yArray));
 		System.out.println("distance: "+Arrays.toString(distances));
-		System.out.println("--------------------------------");*/
+		System.out.println("--------------------------------");
 		
 		
 		
@@ -49,8 +49,8 @@ public class CircleMST {
 			
 			// Add the cost of popped out vertex to total weight of MST. 
 			totalWeight += Math.sqrt(distances[minVertexIndex]);
-			/*System.out.println("minDistance: "+distances[minVertexIndex]);
-			System.out.println("totalWeight: "+totalWeight);*/
+			System.out.println("minDistance: "+distances[minVertexIndex]);
+			System.out.println("totalWeight: "+totalWeight);
 			
 			// Pop out vertex with minimum cost, which is at edges[minVertexIndex].
 			// Swap current vertex with the vertex with index counter.
@@ -82,11 +82,11 @@ public class CircleMST {
 				}
 			}
 			
-			/*
+			
 			System.out.println("x: "+Arrays.toString(xArray));
 			System.out.println("y: "+Arrays.toString(yArray));
 			System.out.println("distance: "+Arrays.toString(distances));
-			System.out.println("--------------------------------");*/
+			System.out.println("--------------------------------");
 		}
 		
 		
