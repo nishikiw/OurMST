@@ -27,12 +27,10 @@ public class RandomMST {
 			totalWeight += edges[minVertexIndex];
 			
 			// Pop out vertex with minimum cost, which is at edges[minVertexIndex].
-			// Swap current vertex with the vertex with index counter if they are not the same.
-			if (minVertexIndex != counter){
-				double counterCost = edges[counter];
-				edges[counter] = edges[minVertexIndex];
-				edges[minVertexIndex] = counterCost;
-			}
+			// Swap current vertex with the vertex with index counter.
+			double counterCost = edges[counter];
+			edges[counter] = edges[minVertexIndex];
+			edges[minVertexIndex] = counterCost;
 			
 			minVertexIndex = 0;
 			// Generate edges connecting the vertex with minimum cost.
