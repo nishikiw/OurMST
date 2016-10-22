@@ -13,6 +13,7 @@ public class CircleMST {
 		int minVertexIndex = 0;
 		
 		// Initiate an array to keep track of edges in MST, which serves as the priority queue.
+		// Note: the stored value is actually distance^2.
 		double[] distances = new double[V - 1];
 		
 		// Generate x and y for starting vertex.
@@ -28,7 +29,7 @@ public class CircleMST {
 		for (int j = 0; j < V - 1; j++){
 			xArray[j] = rd.nextDouble();
 			yArray[j] = -Math.sqrt(1 - Math.pow(xArray[j], 2)) + rd.nextDouble() * 2 * Math.sqrt(1 - Math.pow(xArray[j], 2));
-			distances[j] = Math.sqrt(Math.pow(xArray[j] - x0, 2)+Math.pow(yArray[j] - y0, 2));
+			distances[j] = Math.pow(xArray[j] - x0, 2)+Math.pow(yArray[j] - y0, 2);
 			if (distances[j] < distances[minVertexIndex]){
 				minVertexIndex = j;
 			}
@@ -38,7 +39,7 @@ public class CircleMST {
 		for (int counter = V - 2;counter > 0;counter--){
 			
 			// Add the cost of popped out vertex to total weight of MST. 
-			totalWeight += distances[minVertexIndex];
+			totalWeight += Math.sqrt(distances[minVertexIndex]);
 			
 			// Pop out vertex with minimum cost, which is at edges[minVertexIndex].
 			// Swap current vertex with the vertex with index counter.
@@ -60,20 +61,17 @@ public class CircleMST {
 			minVertexIndex = 0;
 			// Generate edges connecting the vertex with minimum cost.
 			for (int i = 0; i < counter; i++){
-				xArray[i] = rd.nextDouble();
-				yArray[i] = -Math.sqrt(1 - Math.pow(xArray[i], 2)) + rd.nextDouble() * 2 * Math.sqrt(1 - Math.pow(xArray[i], 2));
-				double newDistance = Math.sqrt(Math.pow(xArray[i] - x0, 2)+Math.pow(yArray[i] - y0, 2));
+				double newDistance = Math.pow(xArray[i] - xArray[counter], 2)+Math.pow(yArray[i] - yArray[counter], 2);
 				if (newDistance < distances[i]){
 					distances[i] = newDistance;
 				}
 				if (distances[i] < distances[minVertexIndex]){
 					minVertexIndex = i;
 				}
-			}
-						
+			}			
 		}
 		
-		totalWeight += distances[0];
+		totalWeight += Math.sqrt(distances[0]);
 		return totalWeight;
 	}
 	
