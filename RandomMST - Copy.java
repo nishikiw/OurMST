@@ -1,5 +1,3 @@
-package OurMST;
-
 import java.util.*;
 
 public class RandomMST {
