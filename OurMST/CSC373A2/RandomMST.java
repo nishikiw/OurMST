@@ -49,12 +49,10 @@ public class RandomMST {
 		return totalWeight;
 	}
 	
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int vNum = sc.nextInt();
-		long startTime = System.currentTimeMillis();
-		System.out.println("MST weight: "+RandomMST.getMSTWeight(vNum));
-		System.out.println("Runtime: "+(System.currentTimeMillis() - startTime) / 1000 +" s");
+		System.out.println(RandomMST.getMSTWeight(vNum));
 		sc.close();
 	}
 }

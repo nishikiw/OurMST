@@ -1,6 +1,5 @@
 package OurMST;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -37,21 +36,12 @@ public class CircleMST {
 		}
 		
 		
-		System.out.println("x: "+Arrays.toString(xArray));
-		System.out.println("y: "+Arrays.toString(yArray));
-		System.out.println("distance: "+Arrays.toString(distances));
-		System.out.println("--------------------------------");
-		
-		
-		
 		double totalWeight = 0;
 		for (int counter = V - 2;counter > 0;counter--){
 			
 			// Add the cost of popped out vertex to total weight of MST. 
 			totalWeight += Math.sqrt(distances[minVertexIndex]);
-			System.out.println("minDistance: "+distances[minVertexIndex]);
-			System.out.println("totalWeight: "+totalWeight);
-			
+
 			// Pop out vertex with minimum cost, which is at edges[minVertexIndex].
 			// Swap current vertex with the vertex with index counter.
 			// Swap distance.
@@ -81,25 +71,16 @@ public class CircleMST {
 					minVertexIndex = i;
 				}
 			}
-			
-			
-			System.out.println("x: "+Arrays.toString(xArray));
-			System.out.println("y: "+Arrays.toString(yArray));
-			System.out.println("distance: "+Arrays.toString(distances));
-			System.out.println("--------------------------------");
-		}
-		
+		}	
 		
 		totalWeight += Math.sqrt(distances[0]);
 		return totalWeight;
 	}
 	
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int vNum = sc.nextInt();
-		long startTime = System.currentTimeMillis();
-		System.out.println("MST weight: "+CircleMST.getMSTWeight(vNum));
-		System.out.println("Runtime: "+(System.currentTimeMillis() - startTime) / 1000 +" s");
+		System.out.println(CircleMST.getMSTWeight(vNum));
 		sc.close();
 	}
 }
